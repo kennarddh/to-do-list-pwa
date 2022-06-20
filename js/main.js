@@ -47,6 +47,10 @@ const addTask = (text, id) => {
 	taskList.appendChild(taskElement)
 }
 
+Object.keys(tasks).forEach(id => {
+	addTask(tasks[id], id)
+})
+
 addForm.addEventListener('submit', event => {
 	event.preventDefault()
 
