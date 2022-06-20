@@ -8,3 +8,9 @@ window.addEventListener('load', () => {
 
 const AddForm = document.querySelector('#add-form')
 const AddInput = document.querySelector('#add-form #task')
+
+const randomId = () => {
+	const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0]
+
+	return uint32.toString(16)
+}
