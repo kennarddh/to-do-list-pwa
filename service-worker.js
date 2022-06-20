@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const version = '1.0.4'
+const version = '1.0.5'
 
 const repoName = 'to-do-list-pwa'
 
