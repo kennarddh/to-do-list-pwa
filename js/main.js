@@ -32,5 +32,7 @@ addForm.addEventListener('submit', event => {
 
 	taskElement.querySelector('.delete').setAttribute('data-id', id)
 
+	addInput.value = ''
+
 	taskList.appendChild(taskElement)
 })
