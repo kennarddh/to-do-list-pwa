@@ -1,6 +1,8 @@
 {
 	"name": "To Do List PWA",
 	"short_name": "To Do List",
+	"scope": "/to-do-list-pwa/",
+	"start_url": "/to-do-list-pwa/index.html",
 	"icons": [
 		{
 			"type": "image/png",
@@ -29,7 +31,6 @@
 		}
 	],
 	"lang": "en-US",
-	"start_url": "/index.html",
 	"display": "standalone",
 	"background_color": "#FFFFFF",
 	"theme_color": "#FFFFFF"
