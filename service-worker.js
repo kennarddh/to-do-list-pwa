@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const version = '1.0.2'
+const version = '1.0.3'
 
 const repoName = 'to-do-list-pwa'
 
@@ -17,6 +17,8 @@ self.addEventListener('install', event => {
 		caches
 			.open(`${cacheName}-${version}`)
 			.then(cache => cache.addAll(filesToCache))
+			.then(a => console.log(a))
+			.catch(a => console.log(a))
 	)
 })
 
