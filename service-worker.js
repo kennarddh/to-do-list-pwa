@@ -1,15 +1,10 @@
 const cacheName = 'to-do-list-pwa'
 
-const version = '1.0.3'
+const version = '1.0.4'
 
 const repoName = 'to-do-list-pwa'
 
-const filesToCache = [
-	`${repoName}/`,
-	`${repoName}/index.html`,
-	`${repoName}/css/style.css`,
-	`${repoName}/js/main.js`,
-]
+const filesToCache = ['./', './index.html', './css/style.css', './js/main.js']
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', event => {
@@ -17,8 +12,6 @@ self.addEventListener('install', event => {
 		caches
 			.open(`${cacheName}-${version}`)
 			.then(cache => cache.addAll(filesToCache))
-			.then(a => console.log(a))
-			.catch(a => console.log(a))
 	)
 })
 

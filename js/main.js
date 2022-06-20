@@ -2,9 +2,7 @@
 
 window.addEventListener('load', () => {
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('/to-do-list-pwa/service-worker.js', {
-			scope: '/to-do-list-pwa/',
-		})
+		navigator.serviceWorker.register('../service-worker.js')
 	}
 })
 
