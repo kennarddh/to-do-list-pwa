@@ -19,7 +19,10 @@ console.log(filesToCache)
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', event => {
 	event.waitUntil(
-		caches.open(cacheName).then(cache => cache.addAll(filesToCache))
+		caches.open(cacheName).then(cache => {
+			console.log(filesToCache)
+			cache.addAll(filesToCache)
+		})
 	)
 })
 
