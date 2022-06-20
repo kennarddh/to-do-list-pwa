@@ -19,18 +19,22 @@ const randomId = () => {
 	return uint32.toString(16)
 }
 
-const addTask = (text, id) => {
+const addTask = (task, id) => {
 	const taskElement = taskTemplate.content.cloneNode(true)
 
-	taskElement.querySelector('#task').textContent = text
+	taskElement.querySelector('#task').textContent = task.text
 
 	taskElement.querySelector('.delete').setAttribute('data-id', id)
 
 	addInput.value = ''
 
-	tasks[id] = text
+	tasks[id] = { text: task.text, isDone: task.isDone }
 
 	localStorage.setItem('tasks', JSON.stringify(tasks))
+
+	if (task.isDone) {
+		taskElement.querySelector('#done-checkbox').checked = true
+	}
 
 	taskElement.querySelector('.delete').addEventListener('click', event => {
 		event.preventDefault()
@@ -43,6 +47,16 @@ const addTask = (text, id) => {
 
 		localStorage.setItem('tasks', JSON.stringify(tasks))
 	})
+
+	taskElement
+		.querySelector('#done-checkbox')
+		.addEventListener('change', event => {
+			event.preventDefault()
+
+			tasks[id].isDone = event.target.checked
+
+			localStorage.setItem('tasks', JSON.stringify(tasks))
+		})
 
 	taskList.appendChild(taskElement)
 }
@@ -60,5 +74,5 @@ addForm.addEventListener('submit', event => {
 
 	const id = randomId()
 
-	addTask(task, id)
+	addTask({ text: task, isDone: false }, id)
 })
