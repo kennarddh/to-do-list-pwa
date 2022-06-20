@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const version = '1.0.0'
+const version = '1.0.1'
 
 const isGithubPage = true
 const repoName = 'to-do-list-pwa'
@@ -20,7 +20,7 @@ const filesToCache = isGithubPage
 self.addEventListener('install', event => {
 	event.waitUntil(
 		caches.open(`${cacheName}-${version}`).then(cache => {
-			cache.addAll(filesToCache)
+			cache.addAll(filesToCache).then(console.log)
 		})
 	)
 })
