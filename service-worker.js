@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const isGithubPage = false
+const isGithubPage = true
 const repoName = 'to-do-list-pwa'
 
 const filesToCacheOriginal = [
