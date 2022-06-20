@@ -34,5 +34,13 @@ addForm.addEventListener('submit', event => {
 
 	addInput.value = ''
 
+	taskElement.querySelector('.delete').addEventListener('click', event => {
+		event.preventDefault()
+
+		const task = document.querySelector(`[data-id="${id}"]`)
+
+		task.parentElement.parentElement.remove()
+	})
+
 	taskList.appendChild(taskElement)
 })
