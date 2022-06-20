@@ -11,10 +11,34 @@ const addInput = document.querySelector('#add-form #task')
 const taskTemplate = document.querySelector('template#taskRow')
 const taskList = document.querySelector('#tasks tbody')
 
+const tasks = JSON.parse(localStorage.getItem('tasks') || '[]')
+
 const randomId = () => {
 	const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0]
 
 	return uint32.toString(16)
+}
+
+const addTask = (text, id) => {
+	const taskElement = taskTemplate.content.cloneNode(true)
+
+	taskElement.querySelector('#task').textContent = text
+
+	taskElement.querySelector('.delete').setAttribute('data-id', id)
+
+	addInput.value = ''
+
+	tasks[id] = text
+
+	taskElement.querySelector('.delete').addEventListener('click', event => {
+		event.preventDefault()
+
+		const task = document.querySelector(`[data-id="${id}"]`)
+
+		task.parentElement.parentElement.remove()
+	})
+
+	taskList.appendChild(taskElement)
 }
 
 addForm.addEventListener('submit', event => {
@@ -26,21 +50,5 @@ addForm.addEventListener('submit', event => {
 
 	const id = randomId()
 
-	const taskElement = taskTemplate.content.cloneNode(true)
-
-	taskElement.querySelector('#task').textContent = task
-
-	taskElement.querySelector('.delete').setAttribute('data-id', id)
-
-	addInput.value = ''
-
-	taskElement.querySelector('.delete').addEventListener('click', event => {
-		event.preventDefault()
-
-		const task = document.querySelector(`[data-id="${id}"]`)
-
-		task.parentElement.parentElement.remove()
-	})
-
-	taskList.appendChild(taskElement)
+	addTask(task, id)
 })
