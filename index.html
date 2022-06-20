@@ -118,21 +118,17 @@
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>Task 1</td>
-						<td>
-							<button class="delete">Delete</button>
-						</td>
-					</tr>
-					<tr>
-						<td>Task 2</td>
-						<td>
-							<button class="delete">Delete</button>
-						</td>
-					</tr>
-				</tbody>
+				<tbody></tbody>
 			</table>
+
+			<template id="taskRow">
+				<tr data-id="">
+					<td id="task"></td>
+					<td>
+						<button class="delete">Delete</button>
+					</td>
+				</tr>
+			</template>
 		</main>
 
 		<script src="js/main.js"></script>
