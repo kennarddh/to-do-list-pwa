@@ -11,7 +11,7 @@ const addInput = document.querySelector('#add-form #task')
 const taskTemplate = document.querySelector('template#taskRow')
 const taskList = document.querySelector('#tasks tbody')
 
-const tasks = JSON.parse(localStorage.getItem('tasks') || '[]')
+const tasks = JSON.parse(localStorage.getItem('tasks') || '{}')
 
 const randomId = () => {
 	const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0]
@@ -30,12 +30,18 @@ const addTask = (text, id) => {
 
 	tasks[id] = text
 
+	localStorage.setItem('tasks', JSON.stringify(tasks))
+
 	taskElement.querySelector('.delete').addEventListener('click', event => {
 		event.preventDefault()
 
 		const task = document.querySelector(`[data-id="${id}"]`)
 
 		task.parentElement.parentElement.remove()
+
+		delete tasks[id]
+
+		localStorage.setItem('tasks', JSON.stringify(tasks))
 	})
 
 	taskList.appendChild(taskElement)
