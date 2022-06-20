@@ -62,7 +62,13 @@ const addTask = (task, id) => {
 }
 
 Object.keys(tasks).forEach(id => {
-	addTask(tasks[id], id)
+	if (tasks[id].isDone) {
+		addTask(tasks[id], id)
+
+		return
+	}
+
+	addTask({ text: tasks[id], isDone: false }, id)
 })
 
 addForm.addEventListener('submit', event => {
