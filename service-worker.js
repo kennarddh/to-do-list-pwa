@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const version = 'v1'
+const version = '1.0.0'
 
 const isGithubPage = true
 const repoName = 'to-do-list-pwa'
