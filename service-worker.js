@@ -1,6 +1,6 @@
 const cacheName = 'to-do-list-pwa'
 
-const isGithubPage = true
+const isGithubPage = false
 const repoName = 'to-do-list-pwa'
 
 const filesToCacheOriginal = [
@@ -13,6 +13,8 @@ const filesToCacheOriginal = [
 const filesToCache = isGithubPage
 	? filesToCacheOriginal.map(element => `${repoName}${element}`)
 	: filesToCacheOriginal
+
+console.log(filesToCache)
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', event => {
